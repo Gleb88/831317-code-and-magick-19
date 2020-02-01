@@ -15,7 +15,7 @@ var names = ['Вы', 'Игрок1', 'Игрок2', 'Игрок3'];
 var times = ['2048', '4586', '1093', '3087'];
 var barColors = ['rgba(255, 0, 0, 1)', 'hsl(240,100%,50%)', 'hsl(240,10%,50%)', 'hsl(240,40%,50%)'];
 
-var getMaxElement = function(arr) {
+var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
   for (var i = 0; i < arr.length; i++) {
@@ -27,9 +27,9 @@ var getMaxElement = function(arr) {
   return maxElement;
 };
 
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+  ctx.fillRect (x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
 window.renderStatistics = function (ctx) {
@@ -48,9 +48,9 @@ window.renderStatistics = function (ctx) {
     var barIHeight = (BAR_HEIGHT * times[i]) / maxTime;
 
     ctx.fillStyle = '#000';
-    ctx.fillText(times[i], CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT - barIHeight - TEXT_GAP_Y);
-    ctx.fillText(names[i], CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT + TEXT_GAP_Y);
+    ctx.fillText (times[i], CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT - barIHeight - TEXT_GAP_Y);
+    ctx.fillText (names[i], CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT + TEXT_GAP_Y);
     ctx.fillStyle = barColors[i];
-    ctx.fillRect(CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT - barIHeight, BAR_WIDTH, barIHeight);
+    ctx.fillRect (CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT - barIHeight, BAR_WIDTH, barIHeight);
   };
 };
