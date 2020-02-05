@@ -11,7 +11,6 @@ var BAR_HEIGHT = 150;
 var BAR_GAP_X = 50;
 var BAR_GAP_Y = 80;
 var CLOUD_GAP = 10;
-/*var barColors = ['rgba(255, 0, 0, 1)', 'hsl(240,100%,50%)', 'hsl(240,10%,50%)', 'hsl(240,40%,50%)'];*/
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
@@ -29,6 +28,10 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect (x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+var getBarColors = function (name) {
+  var rendomBlue = 'hsl(240,'+ Math.random()*100 +'%,50%)';
+  return (name === 'Вы') ? 'rgba(255, 0, 0, 1)' : rendomBlue ;
+};
 window.renderStatistics = function (ctx, names, times) {
   renderCloud (ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud (ctx, CLOUD_X, CLOUD_Y, '#fff' );
@@ -42,13 +45,9 @@ window.renderStatistics = function (ctx, names, times) {
 
 
   for (var i = 0; i < names.length; i++) {
-    var getBarColors = function (j) {
-      var rendomBlue = 'hsl(240,'+ Math.random()*100 +'%,50%)';
-      return (names[j] === 'Вы') ? 'rgba(255, 0, 0, 1)' : rendomBlue ;
-    };
 
     var barIHeight = (BAR_HEIGHT * times[i]) / maxTime;
-    var barColor = getBarColors (i);
+    var barColor = getBarColors (names[i]);
 
     ctx.fillStyle = '#000';
     ctx.fillText (Math.round (times[i]), CLOUD_X + (i + 1) * BAR_WIDTH + i * BAR_GAP_X, CLOUD_Y + BAR_GAP_Y + BAR_HEIGHT - barIHeight - TEXT_GAP_Y);
